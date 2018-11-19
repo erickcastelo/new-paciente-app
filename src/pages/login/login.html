@@ -1,0 +1,37 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="form" (ngSubmit)="loggingIn()">
+        <ion-list>
+            <ion-item>
+                <ion-label floating>Email</ion-label>
+                <ion-input type="email" name="email" [(ngModel)]="loginForm.email" formControlName="email"></ion-input>
+            </ion-item>
+            <ion-item no-lines *ngIf="( form.get('email').hasError('required') || form.get('email').hasError('email') )
+                                        && form.get('email').touched">
+                <div *ngIf="form.get('email').hasError('email') && form.get('email').touched && loginForm.email" class="validation-error">
+                    <small>{{ '"Email" inválido.' }}</small>
+                </div>
+                <div *ngIf="form.get('email').hasError('required') && form.get('email').touched" class="validation-error">
+                    <small>{{ '"Email" não pode ficar em branco.' }}</small>
+                </div>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Senha</ion-label>
+                <ion-input type="password" name="password" [(ngModel)]="loginForm.password" formControlName="password"></ion-input>
+            </ion-item>
+            <ion-item no-lines *ngIf="( form.get('password').hasError('required') ) && form.get('password').touched">
+                <div *ngIf="form.get('password').hasError('required') && form.get('password').touched" class="validation-error">
+                    <small>{{ '"Senha" não pode ficar em branco.' }}</small>
+                </div>
+            </ion-item>
+
+        </ion-list>
+
+        <button type="submit" ion-button full [disabled]="form.invalid">Login</button>
+    </form>
+</ion-content>
+

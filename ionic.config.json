@@ -1,0 +1,7 @@
+{
+  "name": "paciente-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

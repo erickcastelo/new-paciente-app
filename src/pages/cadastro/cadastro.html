@@ -1,0 +1,137 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+
+    <form [formGroup]="form" (ngSubmit)="saveOrUpdate()" #formulario="ngForm">
+
+        <ion-item>
+            <ion-label stacked>CPF</ion-label>
+            <ion-input type="text" [textMask]="{mask: masks[0]}" maxlength="20"
+                       formControlName="cpf" name="cpf" [(ngModel)]="register.cpf"></ion-input>
+        </ion-item>
+        <ion-item no-lines *ngIf="( form.get('cpf').hasError('required') ) && form.get('cpf').touched">
+            <div *ngIf="form.get('cpf').hasError('required') && form.get('cpf').touched" class="erros">
+                {{ '"CPF" não pode ficar em branco.' }}
+            </div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>RG</ion-label>
+            <ion-input type="text" [textMask]="{mask: masks[1]}" formControlName="rg" name="rg" [(ngModel)]="register.rg">
+            </ion-input>
+        </ion-item>
+        <ion-item no-lines *ngIf="( form.get('rg').hasError('required') ) && form.get('rg').touched">
+            <div *ngIf="form.get('rg').hasError('required') && form.get('rg').touched" class="erros">
+                {{ '"Rg" não pode ficar em branco.' }}
+            </div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Nome</ion-label>
+            <ion-input type="text"
+                       name="nome"
+                       [(ngModel)]="register.nome"
+                       formControlName="nome">
+            </ion-input>
+        </ion-item>
+        <ion-item no-lines *ngIf="( form.get('nome').hasError('required') || form.get('nome').hasError('maxLength') )
+                                    && form.get('nome').touched">
+            <div *ngIf="form.get('nome').hasError('required') && form.get('nome').touched" class="erros">
+                {{ '"Nome" não pode ficar em branco.' }}
+
+            </div>
+            <div *ngIf="form.get('nome').hasError('maxLength') && form.get('nome').touched" class="erros">
+                {{ '"Nome" não pode ter mais de 90 caracteres.' }}
+            </div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Data Nascimento</ion-label>
+            <ion-datetime
+                name="datanascimento"
+                [(ngModel)]="register.datanascimento"
+                displayFormat="DD/MM/YY" formControlName="datanascimento">
+            </ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Telefone</ion-label>
+            <ion-input type="text" [textMask]="{mask: masks[2]}" maxlength="20"
+                       name="fone"
+                       [(ngModel)]="register.fone"
+                       formControlName="fone">
+            </ion-input>
+        </ion-item>
+        <ion-item no-lines *ngIf="( form.get('fone').hasError('required') ) && form.get('fone').touched">
+            <div *ngIf="form.get('fone').hasError('required') && form.get('fone').touched" class="erros">
+                {{ '"Fone" não pode ficar em branco.' }}
+            </div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Email</ion-label>
+            <ion-input type="email"
+                       name="email"
+                       #inputEmail
+                       [(ngModel)]="register.email"
+                       formControlName="email">
+            </ion-input>
+        </ion-item>
+        <ion-item no-lines *ngIf="( form.get('email').hasError('required') || form.get('email').hasError('email')
+                                    || form.get('email').hasError('maxLength') )  && form.get('fone').touched">
+            <div *ngIf="form.get('email').hasError('required') && form.get('email').touched" class="erros">
+                {{ '"Email" não pode ficar em branco.' }}
+            </div>
+            <div *ngIf="form.get('email').hasError('email') && form.get('email').touched" class="erros">
+                {{ '"Email" inválido.' }}
+            </div>
+            <div *ngIf="form.get('email').hasError('maxLength') && form.get('email').touched" class="erros">
+                {{ '"Email" não pode ter mais de 60 caracteres.' }}
+            </div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Senha</ion-label>
+            <ion-input type="password"
+                       name="password"
+                       [(ngModel)]="register.password"
+                       formControlName="password">
+            </ion-input>
+        </ion-item>
+        <ion-item no-lines *ngIf="( form.get('password').hasError('required') )  && form.get('password').touched">
+            <div *ngIf="form.get('password').hasError('required') && form.get('password').touched" class="erros">
+                {{ '"Senha" não pode ficar em branco.' }}
+            </div>
+            <div *ngIf="form.get('password').hasError('maxlength') && form.get('password').touched" class="erros">
+                {{ '"Senha" não pode ter mais de 60 caracteres.' }}
+            </div>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Confimar Senha</ion-label>
+            <ion-input type="password"
+                       name="confirmPassword"
+                       formControlName="confirmPassword"
+                       #inputConfirmPassword
+                       [(ngModel)]="register.confirmPassword">
+            </ion-input>
+        </ion-item>
+        <ion-item no-lines *ngIf="( form.get('confirmPassword').hasError('required') || form.get('confirmPassword').hasError('valid') )
+                                    && form.get('confirmPassword').touched">
+            <div *ngIf="form.get('confirmPassword').hasError('required') && form.get('confirmPassword').touched" class="erros">
+                {{ '"Confirmar Senha não pode ficar em branco.' }}
+            </div>
+            <div *ngIf="form.get('confirmPassword').hasError('valid') && form.get('confirmPassword').touched" class="erros">
+                {{ 'As senhas não podem ser diferentes.' }}
+            </div>
+        </ion-item>
+    </form>
+
+    <ion-fab top right>
+        <button ion-fab [disabled]="form.invalid" (click)="formulario.ngSubmit.emit()">
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+
+</ion-content>

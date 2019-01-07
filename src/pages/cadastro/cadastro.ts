@@ -64,6 +64,7 @@ export class CadastroPage extends BaseRegistryComponent<Paciente> {
             cidade: "",
             uf: "",
             complemento: "",
+            tipopessoa: "PA",
         } as Paciente;
     }
 

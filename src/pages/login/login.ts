@@ -27,8 +27,7 @@ export class LoginPage {
 
         this.loginForm = {
             email: '',
-            password: '',
-            tipoPessoa: 2
+            password: ''
         };
 
         this.validations();

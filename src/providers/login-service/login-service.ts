@@ -16,15 +16,10 @@ export class LoginServiceProvider extends BaseService<LoginForm>{
 
         return this._http
             .post(this.urlBase + "auth/login", loginForm)
-            .do((result) =>  localStorage.setItem("token", JSON.stringify(result['token'])))
+            .do((result) =>  {
+                localStorage.setItem("user", JSON.stringify(result));
+            })
             .map(response => response as HttpUserEvent<LoginForm>)
-            .catch(ex => Observable.throw(ex));
-    }
-
-    public authenticatedUser(): Observable<Paciente> {
-        return this.http
-            .get(this.urlBase + 'auth/authenticated-user')
-            .map(response => response as HttpUserEvent<Paciente>)
             .catch(ex => Observable.throw(ex));
     }
 }

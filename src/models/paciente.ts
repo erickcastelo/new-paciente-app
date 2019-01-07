@@ -14,4 +14,5 @@ export interface Paciente {
     cidade: string;
     uf: string;
     confirmPassword: string;
+    tipopessoa: string;
 }

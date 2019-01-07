@@ -22,8 +22,8 @@ export class BaseService<T> {
 
     private get token() {
 
-        const token = localStorage.getItem('token') !== null ?
-            JSON.parse(localStorage.getItem('token')) : null;
+        const token = localStorage.getItem('user') !== null ?
+            JSON.parse(localStorage.getItem('user'))['token'] : null;
 
         return token;
     }
@@ -58,21 +58,21 @@ export class BaseService<T> {
 
     public getAll(): Observable<T[]> {
         return this._http
-            .get<T[]>(this.fullUrl + '/index', this.addOptions(this.parameters))
+            .get<T[]>(this.fullUrl, this.addOptions(this.parameters))
             .map(response => response as HttpUserEvent<T[]>)
             .catch(ex => Observable.throw(ex))
     }
 
     public create(entity: T): Observable<T> {
         return this._http
-            .post<T>(this.fullUrl + '/create', entity, this.addOptions(this.parameters))
+            .post<T>(this.fullUrl, entity, this.addOptions(this.parameters))
             .map(response => response as HttpUserEvent<T>)
             .catch(ex => Observable.throw(ex))
     }
 
     public update(id: number | string, body: any): Observable<T> {
         return this._http
-            .patch<T>(this.fullUrl + '/update' + id, body, this.addOptions(this.parameters))
+            .put<T>(this.fullUrl + id, body, this.addOptions(this.parameters))
             .map(response => response as HttpUserEvent<T>)
             .catch(ex => Observable.throw(ex))
     }

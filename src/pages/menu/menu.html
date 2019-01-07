@@ -1,0 +1,31 @@
+<ion-menu [content]="myContent">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content padding>
+        <ion-list>
+            <ion-item>
+                <ion-avatar item-start>
+                    <img [src]="user?.foto"/>
+                </ion-avatar>
+                <p>{{ user?.nome }}</p>
+            </ion-item>
+        </ion-list>
+        <ion-list>
+            <button ion-item (click)="openPage(homePage)">
+                Exames
+            </button>
+            <button ion-item (click)="openPage(friendsPage)">
+                Consultas
+            </button>
+            <button ion-item (click)="openPage(eventsPage)">
+                Events
+            </button>
+            <button ion-item (click)="closeMenu()">
+                Close Menu
+            </button>
+        </ion-list>
+    </ion-content>
+</ion-menu>

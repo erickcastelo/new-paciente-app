@@ -1,0 +1,24 @@
+page-perfil {
+    div.item-avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        ion-avatar {
+            img.avatar-perfil {
+                border-radius: 50%;
+            }
+        }
+    }
+
+    .container-button {
+        display: flex;
+        justify-content: center;
+        button[type=button] {
+            position: relative;
+            border-radius: 7px;
+            left: 5em;
+            bottom: 3em;
+        }
+    }
+}

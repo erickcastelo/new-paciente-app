@@ -20,4 +20,5 @@ export const RESPONSE_CODES = {
     510: "not-extended",
 };
 
-export const MODE_PRODUCTION = false;
+export const MODE_PRODUCTION = true;
+export const IP = '192.168.0.32';

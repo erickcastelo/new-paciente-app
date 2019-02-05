@@ -1,14 +1,14 @@
 import {HttpClient, HttpHeaders, HttpParams, HttpUserEvent} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {String} from "typescript-string-operations";
-import {MODE_PRODUCTION} from "../helpers/constants/app.constant";
+import {IP, MODE_PRODUCTION} from "../helpers/constants/app.constant";
 
 export class BaseService<T> {
 
     private port: string = '8888';
     private api: string = '/api/';
     private protocal: string = location.protocol;
-    private hostname = MODE_PRODUCTION ? '192.168.10.103' : 'localhost';
+    private hostname = MODE_PRODUCTION ? IP : 'localhost';
     protected urlBase: string;
     protected fullUrl: string;
     protected headers = new HttpHeaders();

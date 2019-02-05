@@ -1,0 +1,23 @@
+
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <div class="item-avatar">
+        <ion-avatar item-start>
+            <img (click)="eventCamera()" class="avatar-perfil" [src]="user?.foto"/>
+        </ion-avatar>
+    </div>
+    <div class="container-button">
+        <button type="button" ion-button icon-only="" color="primary">
+            <ion-icon name="camera"></ion-icon>
+        </button>
+    </div>
+
+</ion-content>

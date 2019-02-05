@@ -7,21 +7,21 @@
     <ion-content padding>
         <ion-list>
             <ion-item>
-                <ion-avatar item-start>
+                <ion-avatar item-start (click)="openCamera()">
                     <img [src]="user?.foto"/>
                 </ion-avatar>
                 <p>{{ user?.nome }}</p>
             </ion-item>
         </ion-list>
         <ion-list>
-            <button ion-item (click)="openPage(homePage)">
+            <button ion-item (click)="openCamera()">
                 Exames
             </button>
             <button ion-item (click)="openPage(friendsPage)">
                 Consultas
             </button>
-            <button ion-item (click)="openPage(eventsPage)">
-                Events
+            <button ion-item (click)="openPage('PerfilPage')" menuClose>
+                Perfil
             </button>
             <button ion-item (click)="closeMenu()">
                 Close Menu

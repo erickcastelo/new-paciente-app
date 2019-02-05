@@ -22,6 +22,7 @@ import {ResponseIntercept} from "../helpers/auth/response.intercept";
 import {FormsModule} from "@angular/forms";
 import {PaisServiceProvider} from '../providers/pais-service/pais-service';
 import {MenuPageModule} from "../pages/menu/menu.module";
+import {Camera} from "@ionic-native/camera/ngx";
 
 @NgModule({
     declarations: [
@@ -53,6 +54,7 @@ import {MenuPageModule} from "../pages/menu/menu.module";
             useClass: ResponseIntercept,
             multi: true
         },
+        Camera,
     LoginServiceProvider,
     PacienteServiceProvider,
     PaisServiceProvider,

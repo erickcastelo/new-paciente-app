@@ -46,8 +46,7 @@ export class ResponseIntercept implements HttpInterceptor {
         }, (err: HttpErrorResponse) => {
             this.handleError(err);
             this.initializeAlert();
-            this.error_message = err.error[0].message;
-            this.alert.setSubTitle('erro');
+            this.alert.setSubTitle(this.error_message);
             this.alert.present();
         });
     }

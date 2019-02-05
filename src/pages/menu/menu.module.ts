@@ -11,6 +11,6 @@ import {MenuPage} from "./menu";
     ],
     exports: [
         MenuPage
-    ]
+    ],
 })
 export class MenuPageModule {}
